@@ -10,6 +10,7 @@ void setup(){
   stroke(0, 0, 0); // R, G, B
   strokeWeight(5); // 寬度
   noFill();
+  noCursor();
 }
 
 void draw(){
@@ -22,7 +23,10 @@ void draw(){
     idx = idx + 1;
   }
   for(int i = 0; i < idx; i++) {
+    strokeWeight(5);
     line(px[i], py[i], x[i], y[i]);
   }
-  rect(mouseX, mouseY, 10, 10);
+  strokeWeight(2);
+  line(mouseX - 10, mouseY, mouseX + 10, mouseY);
+  line(mouseX, mouseY - 10, mouseX, mouseY + 10);
 }
