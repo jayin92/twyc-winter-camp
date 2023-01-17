@@ -33,7 +33,7 @@ void draw() {
     p[i].drawPillar();
     p[i].checkPosition();
   }
-  imageMode(CORNER );
+  imageMode(CORNER);
   image(floor, 0, 610, 800, 190);
   fill(0);
   stroke(255);
@@ -143,5 +143,5 @@ void keyPressed() {
 }
 
 float random_opening() {
-  return random(400) + 200;
+  return random(300) + 100;
 }
