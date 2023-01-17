@@ -1,14 +1,15 @@
 //Flappy Code
 bird b = new bird();
 pillar[] p = new pillar[3];
-boolean end = false;
+boolean end = true;
 boolean intro = true;
 int score = 0;
 
-PImage bg, bird, pillar_up, pillar_down;
+PImage bg, bird, pillar_up, pillar_down, floor;
 
 void setup() {
   bg = loadImage("background.jpg");
+  floor = loadImage("floor.jpg");
   bird = loadImage("bird.png");
   pillar_up = loadImage("pillar_up.png");
   pillar_down = loadImage("pillar_down.png");
@@ -20,11 +21,11 @@ void setup() {
 }
 void draw() {
   background(bg);
-  if (end) {
+  if (end == false) {
     b.move();
   }
   b.drawBird();
-  if (end) {
+  if (end == false) {
     b.drag();
   }
   b.checkCollisions();
@@ -32,10 +33,12 @@ void draw() {
     p[i].drawPillar();
     p[i].checkPosition();
   }
+  imageMode(CORNER );
+  image(floor, 0, 610, 800, 190);
   fill(0);
   stroke(255);
   textSize(32);
-  if (end) {
+  if (end == false) {
     rect(20, 20, 100, 50);
     fill(255);
     text(score, 30, 58);
@@ -44,7 +47,7 @@ void draw() {
     rect(150, 200, 200, 50);
     fill(255);
     if (intro) {
-      text("Flappy Code", 155, 140);
+      text("Flappy Bird", 155, 140);
       text("Play Game", 155, 240);
     } else {
       text("Game Over", 170, 140);
@@ -79,12 +82,12 @@ class bird {
     }
   }
   void checkCollisions() {
-    if (yPos > 800) {
-      end = false;
+    if (yPos > 610 || yPos < 0) {
+      end = true;
     }
     for (int i = 0; i < 3; i++) {
-      if ((xPos < p[i].xPos + 10 && xPos > p[i].xPos - 10) && (yPos < p[i].opening - 100 || yPos > p[i].opening + 100)) {
-        end = false;
+      if ((xPos < p[i].xPos + 20 && xPos > p[i].xPos - 20) && (yPos < p[i].opening - 100 || yPos > p[i].opening + 100)) {
+        end = true;
       }
     }
   }
@@ -116,7 +119,7 @@ class pillar {
   }
 }
 void reset() {
-  end = true;
+  end = false;
   score = 0;
   b.yPos = 400;
   for (int i = 0; i < 3; i++) {
@@ -127,14 +130,14 @@ void reset() {
 void mousePressed() {
   b.jump();
   intro = false;
-  if (end == false) {
+  if (end == true) {
     reset();
   }
 }
 void keyPressed() {
   b.jump();
   intro = false;
-  if (end == false) {
+  if (end == true) {
     reset();
   }
 }
