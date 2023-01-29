@@ -8,11 +8,11 @@ void setup(){
 }
 
 void draw(){
-  if (mouseX <= 300) {
+  if (mouseX < 300) {
     background(red);
-  } else if (300 <= mouseX && mouseX <= 600) {
+  } else if (mouseX < 600) {
     background(green);
-  } else if (mouseX <= 900){
+  } else if (mouseX < 900){
     background(blue);
   }
   line(300, 0, 300, 900);

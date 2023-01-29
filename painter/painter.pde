@@ -8,6 +8,7 @@ void setup(){
 void draw(){
   if(mousePressed && mouseButton == LEFT){
     stroke(0, 0, 0);
+    strokeWeight(4);
     line(pmouseX, pmouseY, mouseX, mouseY);
   } else if(mousePressed && mouseButton == RIGHT){
     stroke(255, 255, 255);

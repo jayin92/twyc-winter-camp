@@ -119,14 +119,12 @@ class bird {
   // 碰撞檢測的函數
   void checkCollisions() {
     // 如果 y 方向超出遊戲畫面
-    // TODO
-    if ( ??? (3) ) {
+    if (yPos > 610 || yPos < 0) {
       end = true;
     }
     for (int i = 0; i < 3; i++) {
       // 檢查和第 i 根柱子有沒有發生碰撞
-      // TODO
-      if ( ??? (4) ) {
+      if ((xPos < p[i].xPos + 20 && xPos > p[i].xPos - 20) && (yPos < p[i].opening - opening_half_width || yPos > p[i].opening + opening_half_width)) {
         end = true;
       }
     }
@@ -145,11 +143,10 @@ class pillar {
   }
   
   // 將柱子繪製在畫面上的函數
-  // TODO
   void drawPillar() {
     imageMode(CENTER);
-    image(pillar_up, xPos, ??? (1) , 40, 700);
-    image(pillar_down, xPos, ??? (2), 40, 700);
+    image(pillar_up, xPos, opening - opening_half_width - 350, 40, 700);
+    image(pillar_down, xPos, opening + opening_half_width + 350, 40, 700);
   }
 
   // 檢查柱子是不是已經到達畫面最左邊及是否通過鳥的位置
