@@ -6,11 +6,14 @@ bird b = new bird(); // 創造一個鳥的物件
 pillar[] p = new pillar[3]; // 創造一個柱子物件的陣列，這個陣列共有三個物件
 boolean end = true; // 追蹤遊戲是否結束
 boolean intro = true; // 追蹤是否進入開始畫面
-int opening_half_width = 100; // 柱子間開口的一半高度
 int score = 0; // 用來紀錄分數的變數
-float gravity = 0.4; // 重力加速地的值
+
+// ----- 可以改變的參數 ----- //
+int opening_half_width = 50; // 柱子間開口的一半高度
+float gravity = 0.4; // 重力加速度的值
 float jump_velocity = 10; // 跳一下的速度改變
 int pillar_velocity = 3; // 柱子移動的速度
+// ----------------------- //
 
 PImage bg, bird, pillar_up, pillar_down, floor; // PImage 物件，用來儲存圖片
 
