@@ -1,6 +1,7 @@
 // Flappy Bird
 // Adapted by Jie-Ying Lee for NYCU WEEC Camp
 // 若有不懂的語法可以參考補充資料
+// 可以利用 ctrl + F 找到需要填寫的地方
 
 bird b = new bird(); // 創造一個鳥的物件
 pillar[] p = new pillar[3]; // 創造一個柱子物件的陣列，這個陣列共有三個物件
@@ -8,7 +9,7 @@ boolean end = true; // 追蹤遊戲是否結束
 boolean intro = true; // 追蹤是否進入開始畫面
 int score = 0; // 用來紀錄分數的變數
 
-// ----- 可以改變的參數 ----- //
+// ----- 可以調整的參數 ----- //
 int opening_half_width = 50; // 柱子間開口的一半高度
 float gravity = 0.4; // 重力加速度的值
 float jump_velocity = 10; // 跳一下的速度改變
@@ -123,12 +124,17 @@ class bird {
   void checkCollisions() {
     // 如果 y 方向超出遊戲畫面
     // TODO
+    // 天花板的 y 座標為 0，所以如果鳥的 y 座標小於 0，則表示鳥已經超出遊戲畫面
+    // 地板的 y 座標為 610，所以如果鳥的 y 座標大於 610，則表示鳥已經超出遊戲畫面
+    // 會用到的變數: yPos (鳥的 y 座標位置)
     if ( ??? (3) ) {
       end = true;
     }
     for (int i = 0; i < 3; i++) {
       // 檢查和第 i 根柱子有沒有發生碰撞
       // TODO
+      // 可參考課程投影片
+      // 會用到的變數: xPos (鳥的 x 座標位置), yPos (鳥的 y 座標位置), p[i].opening (第 i 根柱子的開口中央位置的 y 座標), opening_half_width (開口寬度的一半)
       if ( ??? (4) ) {
         end = true;
       }
@@ -149,6 +155,8 @@ class pillar {
   
   // 將柱子繪製在畫面上的函數
   // TODO
+  // 可參考課程投影片
+  // 會用的變數: opening_half_width (開口寬度的一半), opening (開口中央位置的 y 座標)
   void drawPillar() {
     imageMode(CENTER);
     image(pillar_up, xPos, ??? (1) , 40, 700);
